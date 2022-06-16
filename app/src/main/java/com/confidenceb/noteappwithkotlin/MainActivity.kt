@@ -10,10 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dm = DataManager()
+
         val coursesAdapter = ArrayAdapter<CourseInfo>(this,
                 android.R.layout.simple_spinner_item,
-                dm.courses.values.toList())
+                DataManager.courses.values.toList())
         coursesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinnerCourses.adapter = coursesAdapter

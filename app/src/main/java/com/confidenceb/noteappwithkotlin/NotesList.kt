@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.content_notes_list.*
 
 class NotesList : AppCompatActivity() {
 
@@ -17,5 +18,7 @@ class NotesList : AppCompatActivity() {
            val activityIntent = Intent(this, MainActivity::class.java)
             startActivity(activityIntent)
         }
+
+        //listsOfNotes.adapter =
     }
 }
