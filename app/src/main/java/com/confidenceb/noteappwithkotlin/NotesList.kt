@@ -2,6 +2,7 @@ package com.confidenceb.noteappwithkotlin
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,8 @@ class NotesList : AppCompatActivity() {
             startActivity(activityIntent)
         }
 
-        //listsOfNotes.adapter =
+        listsOfNotes.adapter = ArrayAdapter(this,
+        android.R.layout.simple_list_item_1,
+        DataManager.notes)
     }
 }
