@@ -1,7 +1,10 @@
 package com.confidenceb.noteappwithkotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar1))
 
 
         val coursesAdapter = ArrayAdapter<CourseInfo>(this,
@@ -33,5 +37,34 @@ class MainActivity : AppCompatActivity() {
 
         val selectedCoursePositn = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(selectedCoursePositn)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.next_action -> {
+                goToNextNote()
+                true
+            }
+            R.id.back_action -> {
+                backToNotes()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun goToNextNote() {
+        ++noteposition
+        displayNote()
+    }
+
+    private fun backToNotes() {
+        val goBack = Intent(this, NotesList::class.java)
+        startActivity(goBack)
     }
 }

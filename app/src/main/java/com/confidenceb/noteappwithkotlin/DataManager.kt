@@ -32,7 +32,7 @@ object DataManager {
             notes.add(note)
 
             course = courses["kotlin_android"]!!
-            note = NoteInfo(course, "Android Programming with Kotlin",
+            note = NoteInfo(course, "Programming",
                     "Did you know that by default an Android Service will tie up the UI thread?")
             notes.add(note)
             note = NoteInfo(course, "Long running operations",
