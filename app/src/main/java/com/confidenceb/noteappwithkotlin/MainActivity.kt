@@ -70,8 +70,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        if(noteposition >= DataManager.notes.lastIndex)
-            val menuItem = menu.findItem(R.id.next_action)
+        if(noteposition >= DataManager.notes.lastIndex) {
+            val menuItem = menu?.findItem(R.id.next_action)
+            if(menuItem != null){
+                menuItem.icon = getDrawable(R.drawable.ic_block)
+                menuItem.isEnabled = false
+            }
+        }
         return super.onPrepareOptionsMenu(menu)
     }
 }
