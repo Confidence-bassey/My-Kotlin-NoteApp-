@@ -61,10 +61,17 @@ class MainActivity : AppCompatActivity() {
     private fun goToNextNote() {
         ++noteposition
         displayNote()
+        invalidateOptionsMenu()
     }
 
     private fun backToNotes() {
         val goBack = Intent(this, NotesList::class.java)
         startActivity(goBack)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if(noteposition >= DataManager.notes.lastIndex)
+            val menuItem = menu.findItem(R.id.next_action)
+        return super.onPrepareOptionsMenu(menu)
     }
 }
