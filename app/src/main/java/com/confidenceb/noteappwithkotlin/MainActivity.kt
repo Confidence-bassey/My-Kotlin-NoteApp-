@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         spinnerCourses.adapter = coursesAdapter
 
-        noteposition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+        noteposition = intent.getIntExtra(NOTE_POSITION, POSITION_NOT_SET)
         if(noteposition != POSITION_NOT_SET)
             displayNote()
         else{
@@ -34,10 +34,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(NOTE_POSITION, noteposition)
+    }
+
     private fun displayNote() {
         val note = DataManager.notes[noteposition]
         textNoteTitle.setText(note.title )
-        textNoteTitle.setText(note.text)
+        noteText.setText(note.text)
 
         val selectedCoursePositn = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(selectedCoursePositn)
